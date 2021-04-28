@@ -1,6 +1,7 @@
 import csv
 from datetime import datetime
 
+
 class Expense():
     def __init__(self, date_str, vendor, category, amount):
         self.date_time = datetime.strptime(date_str, '%m/%d/%Y %H:%M:%S')
@@ -26,17 +27,17 @@ class Expenses():
                 self.sum += amount
 
     def categorize_for_loop(self):
-            necessary_expenses = set()
-            food_expenses = set()
-            unnecessary_expenses = set()
-            for i in self.list:
-                if (i.category == 'Phone'    or i.category == 'Auto and Gas' or 
+        necessary_expenses = set()
+        food_expenses = set()
+        unnecessary_expenses = set()
+        for i in self.list:
+            if (i.category == 'Phone'    or i.category == 'Auto and Gas' or
                     i.category == 'Classes'  or i.category == 'Utilities' or 
                     i.category == 'Mortgage'): 
-                    necessary_expenses.add(i)
-                elif(i.category == 'Groceries' or i.category == 'Eating Out'):
-                    food_expenses.add(i)
-                else:
-                    unnecessary_expenses.add(i)
+                necessary_expenses.add(i)
+            elif i.category == 'Groceries' or i.category == 'Eating Out':
+                food_expenses.add(i)
+            else:
+                unnecessary_expenses.add(i)
             
-            return [necessary_expenses, food_expenses, unnecessary_expenses]
+        return [necessary_expenses, food_expenses, unnecessary_expenses]
